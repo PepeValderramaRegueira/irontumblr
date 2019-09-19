@@ -26,8 +26,8 @@ const userSchema = new Schema(
       url: String,
       name: String
     },
-    validationCode: { type: String, unique: true },
-    active: false
+    validationCode: { type: String },
+    active: {type: Boolean, default: false}
   },
   {
     timestamps: true
