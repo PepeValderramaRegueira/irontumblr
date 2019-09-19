@@ -3,9 +3,10 @@ const Schema = mongoose.Schema;
 
 const commentSchema = new Schema(
   {
-    author: [ { type : Schema.Types.ObjectId, ref: 'User' } ],
-    title: String,
-    text: String,
+    content: String,
+    authorId: [ { type : Schema.Types.ObjectId, ref: 'User' } ],
+    imgName: String,
+    imgPath: String
   },
   {
     timestamps: true

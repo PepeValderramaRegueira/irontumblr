@@ -41,11 +41,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+hbs.registerPartials("./views/partials");
 
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'IronTumblr';
+
 
 
 // Enable authentication using session + passport
@@ -58,6 +60,10 @@ app.use(session({
 app.use(flash());
 require('./passport')(app);
     
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+})
 
 const index = require('./routes/index');
 app.use('/', index);

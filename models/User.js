@@ -12,7 +12,7 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
-      match: [PASSWORD_PATTERN, "this is not a correct password"]
+      // match: [PASSWORD_PATTERN, "this is not a correct password"]
     },
     email: {
       type: String,
@@ -20,10 +20,11 @@ const userSchema = new Schema(
       required: true,
       lowercase: true,
       trim: true,
-      match: [EMAIL_PATTERN, "this is not a correct email"]
+      // match: [EMAIL_PATTERN, "this is not a correct email"]
     },
     photo: {
-      type: String
+      url: String,
+      name: String
     },
     validationCode: { type: String, unique: true },
     active: false
