@@ -6,7 +6,7 @@ module.exports.checkUserStatus = (req, res, next) => {
   User.findOne({username})
   .then(userFound => {
     if (userFound) {
-      if (userFound.status) {
+      if (userFound.active) {
         next()
       }
       else {

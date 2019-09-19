@@ -109,7 +109,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/confirm/:token", (req, res) => {
-  User.findOneAndUpdate({validationCode: req.params.token}, {status: true}, {new: true})
+  User.updateOne({validationCode: req.params.token}, {active: true}, {new: true})
   .then(userUpdated => {
     if (userUpdated) {
       res.render("auth/activation", {user: true});
@@ -122,8 +122,5 @@ router.get("/confirm/:token", (req, res) => {
 }
 ) 
 
-// router.get("/activation", (req, res) => {
-//   res.render("auth/activation")
-// })
 
 module.exports = router;
