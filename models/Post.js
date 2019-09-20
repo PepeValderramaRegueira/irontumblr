@@ -8,7 +8,6 @@ const postSchema = new Schema(
     creatorId: [ { type : Schema.Types.ObjectId, ref: 'User' } ],
     picName: String,
     picPath: String
-
   },
   {
     timestamps: true
