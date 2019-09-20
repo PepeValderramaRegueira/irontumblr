@@ -1,9 +1,13 @@
 const router = require("express").Router();
 const upload = require("./../config/cloudinary.config");
 const access = require("./../middlewares/access.mid");
+const Post = require("./../models/Post")
 
 router.get("/", (req, res, next) => {
-  res.render("posts/index")
+  Post.find()
+  .then(posts => {
+    res.render("posts/index", {posts})
+  }) 
 })
 
 router.get("/new", access.checkLogin, (req,res,next)=>{
@@ -27,7 +31,15 @@ router.post("/new", [
   }
   
   let {originalname, url} = req.file
-
+  Post.create({
+    title,
+    content,
+    picName: originalname,
+    picPath: url,
+  }) .then(newPost => {
+    res.redirect("/posts")
+  })
+  .catch(error => {console.log(error)})
 })
 
 
