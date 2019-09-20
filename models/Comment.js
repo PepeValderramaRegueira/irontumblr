@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema(
   {
     content: String,
-    authorId: [ { type : Schema.Types.ObjectId, ref: 'User' } ],
+    authorId:  { type : Schema.Types.ObjectId, ref: 'User' } ,
     imgName: String,
     imgPath: String
   },

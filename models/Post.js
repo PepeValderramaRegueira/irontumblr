@@ -5,9 +5,10 @@ const postSchema = new Schema(
   {
     title: String,
     content: String,
-    creatorId: [ { type : Schema.Types.ObjectId, ref: 'User' } ],
+    creatorId: { type : Schema.Types.ObjectId, ref: 'User' },
     picName: String,
-    picPath: String
+    picPath: String,
+    comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
   },
   {
     timestamps: true
